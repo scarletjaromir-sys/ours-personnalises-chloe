@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La naissance du monothéisme juif ✡️</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bleu: #1a6b8a;
+  --bleu-dark: #0f4a62;
+  --bleu-light: #a8d4e6;
+  --bleu-pale: #eaf5fa;
+  --or: #c8941a;
+  --or-light: #fdf3d9;
+  --rouge: #e74c3c;
+  --vert: #2ecc71;
+  --violet: #8e44ad;
+  --text: #2c3e50;
+  --text-light: #666;
+  --white: #fff;
+  --bg: #f0f7fa;
+  --card-shadow: 0 4px 20px rgba(26,107,138,0.12);
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* ===== HEADER ===== */
+header {
+  background: linear-gradient(135deg, #0f4a62, #1a6b8a, #2596be);
+  padding: 36px 20px 28px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+header::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 4l4 7h8l-4 7 4 7h-8l-4 7-4-7H4l4-7-4-7h8z' fill='none' stroke='rgba(255,255,255,0.05)' stroke-width='1'/%3E%3C/svg%3E");
+  background-size: 60px 60px;
+}
+.header-emoji { font-size: 2.4rem; margin-bottom: 8px; position: relative; }
+header h1 {
+  font-family: 'Baloo 2', cursive;
+  font-size: 1.8rem;
+  color: #fff;
+  text-shadow: 2px 2px 12px rgba(0,0,0,0.3);
+  position: relative;
+  line-height: 1.3;
+}
+header .subtitle {
+  color: rgba(255,255,255,0.85);
+  margin-top: 8px;
+  font-size: 0.95rem;
+  position: relative;
+}
+.back-btn {
+  display: inline-block;
+  background: rgba(255,255,255,0.15);
+  border: 2px solid rgba(255,255,255,0.4);
+  color: #fff; padding: 6px 16px;
+  border-radius: 20px; font-family: 'Nunito', sans-serif;
+  font-size: 0.85rem; cursor: pointer;
+  text-decoration: none;
+  margin-bottom: 16px;
+  position: relative;
+  transition: background 0.2s;
+}
+.back-btn:hover { background: rgba(255,255,255,0.28); }
+
+/* ===== TABS ===== */
+.tabs-nav {
+  display: flex; justify-content: center; gap: 8px;
+  padding: 20px 16px 0;
+  flex-wrap: wrap;
+}
+.tab-btn {
+  font-family: 'Baloo 2', cursive;
+  font-size: 0.95rem;
+  padding: 8px 18px;
+  border-radius: 24px;
+  border: 2px solid var(--bleu-light);
+  background: #fff;
+  color: var(--bleu);
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 700;
+}
+.tab-btn.active, .tab-btn:hover {
+  background: linear-gradient(135deg, var(--bleu), var(--bleu-dark));
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 4px 12px rgba(26,107,138,0.3);
+}
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+/* ===== CONTAINER ===== */
+.container {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 24px 18px 60px;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title {
+  font-family: 'Baloo 2', cursive;
+  font-size: 1.3rem;
+  color: var(--bleu-dark);
+  margin: 32px 0 14px;
+  display: flex; align-items: center; gap: 10px;
+  border-left: 5px solid var(--bleu);
+  padding-left: 12px;
+}
+
+/* ===== INFO BOXES ===== */
+.info-box {
+  background: var(--bleu-pale);
+  border-radius: 16px;
+  padding: 18px 20px;
+  margin-bottom: 18px;
+  border-left: 5px solid var(--bleu);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+.info-box.or {
+  background: var(--or-light);
+  border-left-color: var(--or);
+}
+.info-box.rouge {
+  background: #fdf0ee;
+  border-left-color: var(--rouge);
+}
+.info-box.vert {
+  background: #eafaf1;
+  border-left-color: var(--vert);
+}
+
+/* ===== QUESTION CENTRALE ===== */
+.question-centrale {
+  background: linear-gradient(135deg, var(--bleu-dark), var(--bleu));
+  border-radius: 16px;
+  padding: 20px 22px;
+  margin-bottom: 24px;
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 700;
+  font-style: italic;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* ===== TOOLTIP DEFINITIONS ===== */
+.def {
+  border-bottom: 2px dotted var(--bleu);
+  color: var(--bleu-dark);
+  font-weight: 700;
+  cursor: help;
+  position: relative;
+  display: inline-block;
+}
+.def .tooltip {
+  display: none;
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #0f4a62;
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  width: 230px;
+  text-align: center;
+  z-index: 50;
+  line-height: 1.4;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  pointer-events: none;
+}
+.def .tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%; left: 50%;
+  transform: translateX(-50%);
+  border: 7px solid transparent;
+  border-top-color: #0f4a62;
+}
+.def:hover .tooltip { display: block; }
+
+/* ===== DEUX COLONNES ===== */
+.deux-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin: 18px 0;
+}
+.col-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: var(--card-shadow);
+}
+.col-card h3 {
+  font-family: 'Baloo 2', cursive;
+  font-size: 1rem;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid;
+}
+.col-card.bible h3 { color: var(--or); border-color: var(--or-light); }
+.col-card.historiens h3 { color: var(--bleu); border-color: var(--bleu-pale); }
+.col-card ul { list-style: none; }
+.col-card ul li {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  padding: 5px 0;
+  border-bottom: 1px solid #f0f0f0;
+  padding-left: 18px;
+  position: relative;
+}
+.col-card ul li::before {
+  content: '→';
+  position: absolute; left: 0;
+  font-weight: 700;
+}
+.col-card.bible ul li::before { color: var(--or); }
+.col-card.historiens ul li::before { color: var(--bleu); }
+.col-card ul li:last-child { border-bottom: none; }
+
+/* ===== CROYANCES CARDS ===== */
+.croyances-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+  margin: 16px 0;
+}
+.croyance-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 16px 14px;
+  box-shadow: var(--card-shadow);
+  border-top: 4px solid var(--bleu);
+  text-align: center;
+}
+.croyance-card .icon { font-size: 2rem; margin-bottom: 8px; }
+.croyance-card .titre {
+  font-family: 'Baloo 2', cursive;
+  color: var(--bleu-dark);
+  font-size: 0.95rem;
+  margin-bottom: 6px;
+}
+.croyance-card .desc {
+  font-size: 0.82rem;
+  color: var(--text-light);
+  line-height: 1.5;
+}
+
+/* ===== VOCABULAIRE GRID ===== */
+.vocab-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 10px;
+  margin: 16px 0;
+}
+.vocab-item {
+  background: #fff;
+  border-radius: 12px;
+  padding: 12px 16px;
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.vocab-mot {
+  font-family: 'Baloo 2', cursive;
+  color: var(--bleu-dark);
+  font-size: 0.95rem;
+  font-weight: 800;
+}
+.vocab-def {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  line-height: 1.5;
+}
+
+/* ===== SYNTHESE ===== */
+.synth-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: var(--card-shadow);
+  border-top: 4px solid var(--bleu);
+}
+.synth-card h3 {
+  font-family: 'Baloo 2', cursive;
+  color: var(--bleu-dark);
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+.synth-card p, .synth-card li {
+  font-size: 0.95rem;
+  line-height: 1.75;
+}
+.synth-card ul { padding-left: 20px; }
+.synth-card li { margin-bottom: 5px; }
+
+/* ===== EXERCICES ===== */
+.exo-section { margin-bottom: 32px; }
+.exo-title {
+  font-family: 'Baloo 2', cursive;
+  font-size: 1.15rem;
+  color: var(--bleu-dark);
+  margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px;
+}
+
+/* QCM */
+.qcm-question {
+  background: #fff;
+  border-radius: 16px;
+  padding: 18px 20px;
+  margin-bottom: 16px;
+  box-shadow: var(--card-shadow);
+}
+.qcm-question p { font-weight: 700; margin-bottom: 12px; font-size: 0.97rem; line-height: 1.5; }
+.qcm-choices { display: flex; flex-direction: column; gap: 8px; }
+.qcm-choice {
+  padding: 10px 16px;
+  border-radius: 12px;
+  border: 2px solid #c9e8f0;
+  background: var(--bleu-pale);
+  cursor: pointer;
+  font-size: 0.93rem;
+  transition: all 0.18s;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+  text-align: left;
+}
+.qcm-choice:hover { border-color: var(--bleu); background: #d6eef6; }
+.qcm-choice.correct { background: #eafaf1; border-color: var(--vert); color: #1a7a47; }
+.qcm-choice.wrong { background: #fdf0ee; border-color: var(--rouge); color: #a93226; }
+.qcm-feedback {
+  margin-top: 10px; font-size: 0.88rem; font-weight: 700;
+  display: none; padding: 8px 12px; border-radius: 10px;
+}
+.qcm-feedback.show { display: block; }
+.qcm-feedback.ok { background: #eafaf1; color: #1a7a47; }
+.qcm-feedback.ko { background: #fdf0ee; color: #a93226; }
+
+/* VRAI FAUX */
+.vf-question {
+  background: #fff;
+  border-radius: 16px;
+  padding: 16px 20px;
+  margin-bottom: 12px;
+  box-shadow: var(--card-shadow);
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+}
+.vf-text { flex: 1; font-size: 0.95rem; font-weight: 600; min-width: 180px; line-height: 1.5; }
+.vf-btns { display: flex; gap: 8px; }
+.vf-btn {
+  padding: 7px 16px; border-radius: 20px;
+  border: 2px solid var(--bleu-light);
+  background: var(--bleu-pale);
+  cursor: pointer; font-family: 'Nunito', sans-serif;
+  font-weight: 700; font-size: 0.88rem; transition: all 0.18s;
+}
+.vf-btn:hover { border-color: var(--bleu); }
+.vf-btn.selected-vrai { background: #eafaf1; border-color: var(--vert); color: #1a7a47; }
+.vf-btn.selected-faux { background: #fdf0ee; border-color: var(--rouge); color: #a93226; }
+.vf-btn.correct-btn { background: #eafaf1; border-color: var(--vert); color: #1a7a47; }
+.vf-btn.wrong-btn { background: #fdf0ee; border-color: var(--rouge); color: #a93226; }
+
+/* DRAG & DROP */
+.drag-container {
+  background: #fff; border-radius: 16px;
+  padding: 20px; box-shadow: var(--card-shadow); margin-bottom: 16px;
+}
+.drag-container p { font-weight: 700; margin-bottom: 14px; font-size: 0.97rem; }
+.drag-words {
+  display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px;
+  min-height: 44px; padding: 8px;
+  border: 2px dashed var(--bleu-light); border-radius: 12px;
+}
+.drag-word {
+  background: linear-gradient(135deg, var(--bleu), var(--bleu-dark));
+  color: #fff; padding: 6px 14px; border-radius: 20px;
+  cursor: grab; font-size: 0.88rem; font-weight: 700;
+  user-select: none; transition: transform 0.15s, box-shadow 0.15s;
+}
+.drag-word:hover { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(26,107,138,0.35); }
+.drag-word.dragging { opacity: 0.4; }
+.drag-slots { display: flex; flex-direction: column; gap: 10px; }
+.drag-slot { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.drag-slot .slot-label { font-size: 0.9rem; font-weight: 700; min-width: 100px; color: var(--bleu-dark); }
+.slot-drop {
+  min-height: 36px; min-width: 130px;
+  border: 2px dashed var(--bleu-light); border-radius: 10px;
+  padding: 4px 10px; display: flex; align-items: center;
+  background: var(--bleu-pale); transition: border-color 0.2s, background 0.2s;
+}
+.slot-drop.drag-over { border-color: var(--bleu); background: #d6eef6; }
+.slot-drop.correct-drop { border-color: var(--vert); background: #eafaf1; }
+.slot-drop.wrong-drop { border-color: var(--rouge); background: #fdf0ee; }
+
+/* ASSOCIER */
+.match-container { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+.match-col { display: flex; flex-direction: column; gap: 8px; }
+.match-item {
+  background: #fff; border: 2px solid #c9e8f0; border-radius: 12px;
+  padding: 10px 14px; font-size: 0.85rem; font-weight: 600;
+  cursor: pointer; transition: all 0.18s; text-align: center; line-height: 1.4;
+}
+.match-item:hover { border-color: var(--bleu); background: var(--bleu-pale); }
+.match-item.selected { background: var(--bleu); color: #fff; border-color: var(--bleu-dark); }
+.match-item.matched-ok { background: #eafaf1; border-color: var(--vert); color: #1a7a47; }
+.match-item.matched-ko { background: #fdf0ee; border-color: var(--rouge); color: #a93226; }
+
+/* ORDRE */
+.order-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px; }
+.order-item {
+  background: #fff; border: 2px solid #c9e8f0; border-radius: 12px;
+  padding: 11px 16px; cursor: grab; display: flex; align-items: center; gap: 10px;
+  font-size: 0.9rem; font-weight: 600; user-select: none; transition: box-shadow 0.15s;
+  box-shadow: 0 2px 8px rgba(26,107,138,0.07); line-height: 1.4;
+}
+.order-item:hover { box-shadow: 0 4px 16px rgba(26,107,138,0.18); border-color: var(--bleu); }
+.order-item.dragging-o { opacity: 0.3; }
+.order-handle { color: var(--bleu-light); font-size: 1.1rem; }
+
+/* FLASHCARDS */
+.flashcards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 14px; }
+.flashcard { height: 130px; perspective: 1000px; cursor: pointer; }
+.flashcard-inner { position: relative; width: 100%; height: 100%; transition: transform 0.5s; transform-style: preserve-3d; }
+.flashcard.flipped .flashcard-inner { transform: rotateY(180deg); }
+.flashcard-front, .flashcard-back {
+  position: absolute; inset: 0; border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  padding: 14px; text-align: center; backface-visibility: hidden;
+  font-size: 0.9rem; font-weight: 700; line-height: 1.4; box-shadow: var(--card-shadow);
+}
+.flashcard-front { background: linear-gradient(135deg, var(--bleu), var(--bleu-dark)); color: #fff; }
+.flashcard-back { background: #fff; color: var(--bleu-dark); transform: rotateY(180deg); border: 2px solid var(--bleu-light); }
+
+/* BOUTONS */
+.btn-check {
+  background: linear-gradient(135deg, var(--bleu), var(--bleu-dark));
+  color: #fff; border: none; border-radius: 14px;
+  padding: 10px 24px; font-family: 'Baloo 2', cursive;
+  font-size: 1rem; cursor: pointer; margin-top: 12px;
+  transition: opacity 0.2s, transform 0.15s;
+}
+.btn-check:hover { opacity: 0.88; transform: translateY(-1px); }
+.btn-reset {
+  background: none; border: 2px solid var(--bleu-light);
+  color: var(--bleu); border-radius: 14px; padding: 8px 20px;
+  font-family: 'Nunito', sans-serif; font-size: 0.9rem;
+  cursor: pointer; margin-top: 8px; margin-left: 8px; transition: all 0.2s;
+}
+.btn-reset:hover { border-color: var(--bleu); background: var(--bleu-pale); }
+.result-msg {
+  margin-top: 12px; padding: 12px 16px; border-radius: 12px;
+  font-weight: 700; font-size: 0.95rem; display: none;
+}
+.result-msg.show { display: block; }
+.result-msg.ok { background: #eafaf1; color: #1a7a47; }
+.result-msg.partial { background: #fef9e7; color: #7d6608; }
+.result-msg.ko { background: #fdf0ee; color: #a93226; }
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  header h1 { font-size: 1.3rem; }
+  .tabs-nav { gap: 5px; padding: 14px 10px 0; }
+  .tab-btn { font-size: 0.78rem; padding: 7px 10px; }
+  .container { padding: 16px 12px 50px; }
+  .deux-cols { grid-template-columns: 1fr; }
+  .croyances-grid { grid-template-columns: 1fr 1fr; }
+  .match-container { grid-template-columns: 1fr; }
+  .flashcards-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .flashcard { height: 110px; }
+  .flashcard-front, .flashcard-back { font-size: 0.78rem; padding: 10px; }
+  .vf-question { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .drag-slot { flex-wrap: wrap; }
+  .vocab-grid { grid-template-columns: 1fr; }
+  .info-box { font-size: 0.9rem; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a href="../index.html" class="back-btn">← Retour</a>
+  <div class="header-emoji">✡️ 📜 🕍</div>
+  <h1>La naissance du monothéisme juif</h1>
+  <p class="subtitle">Histoire • 6ème • Dans un monde polythéiste – Ier millénaire av. J.-C.</p>
+</header>
+
+<div class="tabs-nav">
+  <button class="tab-btn active" onclick="showTab('cours', this)">📖 Cours</button>
+  <button class="tab-btn" onclick="showTab('synthese', this)">🗂️ Synthèse</button>
+  <button class="tab-btn" onclick="showTab('vocabulaire', this)">📝 Vocabulaire</button>
+  <button class="tab-btn" onclick="showTab('exercices', this)">✏️ Exercices</button>
+  <button class="tab-btn" onclick="showTab('flashcards', this)">🃏 Flashcards</button>
+</div>
+
+<!-- ===================== COURS ===================== -->
+<div id="tab-cours" class="tab-content active">
+<div class="container">
+
+  <div class="question-centrale">
+    ❓ Dans quel contexte est née la religion juive, dans un monde où tout le monde croyait en plusieurs dieux ?
+  </div>
+
+  <div class="info-box or">
+    💡 <strong>Polythéiste ou monothéiste ?</strong><br>
+    À cette époque, presque tous les peuples étaient <span class="def">polythéistes<span class="tooltip">Polythéiste = qui croit en plusieurs dieux. Par exemple, les Grecs croyaient en Zeus, Athéna, Poséidon...</span></span> (ils croyaient en plein de dieux différents). Les Hébreux étaient différents : ils ne croyaient qu'en <strong>un seul dieu</strong>, appelé <strong>Yahvé</strong>. On dit qu'ils étaient <span class="def">monothéistes<span class="tooltip">Monothéiste = qui croit en un seul dieu. C'est la grande originalité du peuple hébreu !</span></span>.
+  </div>
+
+  <div class="section-title">📖 1. Ce que dit la Bible</div>
+
+  <div class="info-box">
+    La <span class="def">Bible<span class="tooltip">La Bible est le livre sacré des Juifs (et aussi des Chrétiens). Elle raconte l'histoire du peuple hébreu, sa relation avec Dieu, et contient des lois et des récits.</span></span> est le texte sacré des Hébreux. Elle raconte leur histoire : la création du monde, l'esclavage en Égypte, leurs voyages… C'est leur livre le plus important.
+  </div>
+
+  <div class="info-box bleu" style="background:var(--bleu-pale); border-left-color:var(--bleu);">
+    📜 Selon la Bible, voici ce qui s'est passé :
+    <ul style="margin-top:10px; padding-left:20px; line-height:2;">
+      <li>Dieu (<strong>Yahvé</strong>) a fait une <span class="def">alliance<span class="tooltip">Alliance = un pacte, un accord. Yahvé promet de protéger le peuple hébreu, et en échange, les Hébreux lui promettent d'être fidèles.</span></span> avec <span class="def">Abraham<span class="tooltip">Abraham est considéré comme le père fondateur du peuple hébreu. C'est lui que Dieu a choisi en premier pour faire l'alliance.</span></span>.</li>
+      <li>En échange de leur fidélité, Yahvé leur donne la <span class="def">Terre Promise<span class="tooltip">La Terre Promise, c'est le pays de Canaan (l'actuelle Palestine/Israël). Dieu la promet à Abraham et à ses descendants dans la Bible.</span></span> : le pays de Canaan (Palestine actuelle).</li>
+      <li>Ils étaient entourés de peuples qui croyaient en plein de dieux différents.</li>
+      <li>Leur livre sacré contient la <span class="def">Torah<span class="tooltip">La Torah, c'est la Loi. En hébreu, "Torah" signifie "loi". Ce sont les 5 premiers livres de la Bible, qui contiennent les règles de vie données par Dieu.</span></span> ("Loi" en hébreu) : les 5 premiers livres de la Bible avec toutes leurs règles de vie.</li>
+    </ul>
+  </div>
+
+  <div class="section-title">🔍 2. Ce que savent les historiens</div>
+
+  <div class="info-box">
+    Les historiens cherchent des <strong>preuves</strong> : des fouilles archéologiques, des textes anciens… Voici ce qu'ils ont découvert, en dehors de la Bible :
+  </div>
+
+  <div class="info-box" style="background:#fff; border-left-color:var(--bleu-dark); padding-left:20px;">
+    <ul style="padding-left:16px; line-height:2.1;">
+      <li>Un <strong>royaume hébreu</strong> a bien existé, fondé par le roi <strong>David</strong>.</li>
+      <li>Un <strong>temple</strong> a existé à <strong>Jérusalem</strong>.</li>
+      <li>Vers le Xème siècle av. J.-C., il y avait <strong>2 royaumes</strong> hébreux : <strong>Juda</strong> et <strong>Israël</strong>.</li>
+      <li>Le monothéisme s'est vraiment imposé grâce aux réformes du roi <strong>Josias</strong> (VIIème siècle av. J.-C.).</li>
+      <li>Leurs puissants voisins les <strong>Babyloniens</strong> les ont attaqués et une partie du peuple a été emmenée en exil à <strong>Babylone</strong>.</li>
+      <li>Le reste de la population a été dispersé autour de la Méditerranée : c'est la <span class="def">Diaspora<span class="tooltip">Diaspora vient du grec et signifie "dispersion". C'est le nom donné aux communautés juives qui vivent en dehors de la Terre d'Israël, dispersées dans le monde.</span></span>.</li>
+      <li>Plus tard, les <strong>Romains</strong> ont chassé les Juifs de Jérusalem et détruit le temple (Ier siècle av. J.-C.).</li>
+    </ul>
+  </div>
+
+  <div class="section-title">🕍 3. Les croyances et pratiques</div>
+
+  <div class="info-box or">
+    🌟 Le <span class="def">judaïsme<span class="tooltip">Le judaïsme, c'est la religion des Juifs. C'est une des plus anciennes religions monothéistes du monde !</span></span>, c'est la religion des Juifs. Voici ses grandes idées et pratiques :
+  </div>
+
+  <div class="croyances-grid">
+    <div class="croyance-card">
+      <div class="icon">☝️</div>
+      <div class="titre">Un seul Dieu</div>
+      <div class="desc">Yahvé est le seul dieu. Pas question d'en adorer d'autres !</div>
+    </div>
+    <div class="croyance-card">
+      <div class="icon">📜</div>
+      <div class="titre">La Torah</div>
+      <div class="desc">Les 5 premiers livres de la Bible contiennent les lois données par Dieu.</div>
+    </div>
+    <div class="croyance-card">
+      <div class="icon">🕍</div>
+      <div class="titre">La Synagogue</div>
+      <div class="desc">Le lieu où les Juifs se rassemblent pour prier et lire la Bible.</div>
+    </div>
+    <div class="croyance-card">
+      <div class="icon">🌙</div>
+      <div class="titre">Le Shabbat</div>
+      <div class="desc">Jour de repos et de prière, du vendredi soir au samedi soir.</div>
+    </div>
+    <div class="croyance-card">
+      <div class="icon">📦</div>
+      <div class="titre">Arche d'Alliance</div>
+      <div class="desc">Coffre en bois contenant les Tables de la Loi (les 10 Commandements).</div>
+    </div>
+    <div class="croyance-card">
+      <div class="icon">📣</div>
+      <div class="titre">Les Prophètes</div>
+      <div class="desc">Des hommes chargés de transmettre la parole de Dieu au peuple.</div>
+    </div>
+    <div class="croyance-card">
+      <div class="icon">🎓</div>
+      <div class="titre">Le Rabbin</div>
+      <div class="desc">Le maître religieux juif, spécialiste de la Bible et de la Loi. Il guide les fidèles.</div>
+    </div>
+    <div class="croyance-card">
+      <div class="icon">✂️</div>
+      <div class="titre">La Circoncision</div>
+      <div class="desc">Signe de l'alliance entre Dieu et le peuple hébreu, pratiquée sur les garçons.</div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ===================== SYNTHESE ===================== -->
+<div id="tab-synthese" class="tab-content">
+<div class="container">
+
+  <div class="section-title">🗂️ L'essentiel à retenir</div>
+
+  <div class="synth-card">
+    <h3>📌 Qui sont les Hébreux ?</h3>
+    <p>Les Hébreux sont un peuple du Proche-Orient (région de la Palestine actuelle). Leur grande originalité est de croire en <strong>un seul dieu : Yahvé</strong>. Tout le monde autour d'eux croit en plusieurs dieux (polythéisme). Leur religion s'appelle le <strong>judaïsme</strong>.</p>
+  </div>
+
+  <div class="synth-card">
+    <h3>📌 Bible vs Historiens : deux sources différentes</h3>
+    <ul>
+      <li><strong>La Bible</strong> raconte que Yahvé a fait une alliance avec Abraham et lui a promis la Terre de Canaan. Elle contient la <strong>Torah</strong> (les lois de Dieu).</li>
+      <li><strong>Les historiens</strong> confirment qu'un royaume hébreu a existé (roi David, temple de Jérusalem). Ils montrent aussi que les Hébreux ont subi des attaques (Babyloniens, Romains) et ont été dispersés (<strong>Diaspora</strong>).</li>
+    </ul>
+  </div>
+
+  <div class="synth-card">
+    <h3>📌 Les grandes étapes de l'histoire hébraïque</h3>
+    <ul>
+      <li>Alliance de Dieu avec <strong>Abraham</strong> → installation en Canaan.</li>
+      <li>Fondation du royaume par le roi <strong>David</strong>, temple à <strong>Jérusalem</strong>.</li>
+      <li>Division en 2 royaumes : <strong>Juda</strong> et <strong>Israël</strong>.</li>
+      <li>Attaque des <strong>Babyloniens</strong> → exil à Babylone.</li>
+      <li>Dispersion du peuple juif autour de la Méditerranée : la <strong>Diaspora</strong>.</li>
+      <li>Les <strong>Romains</strong> détruisent le temple de Jérusalem (Ier siècle).</li>
+    </ul>
+  </div>
+
+  <div class="synth-card">
+    <h3>📌 Les pratiques du judaïsme</h3>
+    <ul>
+      <li><strong>Torah</strong> : les 5 premiers livres de la Bible, la Loi de Dieu.</li>
+      <li><strong>Shabbat</strong> : jour de repos hebdomadaire (vendredi soir → samedi soir).</li>
+      <li><strong>Synagogue</strong> : lieu de prière et de lecture de la Bible.</li>
+      <li><strong>Rabbin</strong> : maître religieux qui guide les fidèles.</li>
+      <li><strong>Arche d'Alliance</strong> : coffre contenant les 10 Commandements.</li>
+    </ul>
+  </div>
+
+</div>
+</div>
+
+<!-- ===================== VOCABULAIRE ===================== -->
+<div id="tab-vocabulaire" class="tab-content">
+<div class="container">
+
+  <div class="section-title">📝 Les mots importants du cours</div>
+  <p style="color:var(--text-light); margin-bottom:18px; font-size:0.93rem;">Tous les mots clés expliqués simplement 👇</p>
+
+  <div class="vocab-grid">
+    <div class="vocab-item">
+      <div class="vocab-mot">✡️ Judaïsme</div>
+      <div class="vocab-def">La religion des Juifs. C'est une des plus anciennes religions du monde qui croit en un seul dieu.</div>
+    </div>
+    <div class="vocab-item">
+      <div class="vocab-mot">☝️ Monothéiste</div>
+      <div class="vocab-def">Qui croit en un seul dieu. Les Hébreux ne croient qu'en Yahvé.</div>
+    </div>
+    <div class="vocab-item">
+      <div class="vocab-mot">🏛️ Polythéiste</div>
+      <div class="vocab-def">Qui croit en plusieurs dieux. C'était le cas de presque tous les peuples autour des Hébreux.</div>
+    </div>
+    <div class="vocab-item">
+      <div class="vocab-mot">🤝 Alliance</div>
+      <div class="vocab-def">Pacte entre Yahvé et le peuple hébreu : Dieu les protège, ils lui restent fidèles.</div>
+    </div>
+    <div class="vocab-item">
+      <div class="vocab-mot">🌍 Terre Promise</div>
+      <div class="vocab-def">Le pays de Canaan (Palestine actuelle) que Yahvé promet à Abraham et ses descendants.</div>
+    </div>
+    <div class="vocab-item">
+      <div class="vocab-mot">🌐 Diaspora</div>
+      <div class="vocab-def">Du grec "dispersion". Les communautés juives installées en dehors de la Terre d'Israël.</div>
+    </div>
+    <div class="vocab-item">
+      <div class="vocab-mot">📜 Torah</div>
+      <div class="vocab-def">Mot hébreu qui signifie "loi". Les 5 premiers livres de la Bible avec les règles données par Dieu.</div>
+    </div>
+    <div class="vocab-item">
+      <div class="vocab-mot">📣 Prophète</div>
+      <div class="vocab-def">Homme chargé de transmettre la parole de Dieu au peuple.</div>
+    </div>
+    <div class="vocab-item">
+      <div class="vocab-mot">🕍 Synagogue</div>
+      <div class="vocab-def">Lieu de culte juif où les fidèles se réunissent pour prier et lire la Bible.</div>
+    </div>
+    <div class="vocab-item">
+      <div class="vocab-mot">🎓 Rabbin</div>
+      <div class="vocab-def">Maître religieux juif, spécialiste de la Bible et de la Loi. Il guide les fidèles dans leur foi.</div>
+    </div>
+    <div class="vocab-item">
+      <div class="vocab-mot">🌙 Shabbat</div>
+      <div class="vocab-def">Jour de repos et de prière consacré à Dieu, du vendredi soir au samedi soir.</div>
+    </div>
+    <div class="vocab-item">
+      <div class="vocab-mot">📦 Arche d'Alliance</div>
+      <div class="vocab-def">Coffre en bois qui contenait les Tables de la Loi (les 10 Commandements gravés).</div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ===================== EXERCICES ===================== -->
+<div id="tab-exercices" class="tab-content">
+<div class="container">
+
+  <!-- QCM -->
+  <div class="exo-section">
+    <div class="exo-title">🔵 QCM – Une seule bonne réponse !</div>
+
+    <div class="qcm-question" id="q1">
+      <p>1. Comment s'appelle la religion des Juifs ?</p>
+      <div class="qcm-choices">
+        <button class="qcm-choice" onclick="checkQCM('q1',this,false)">Le christianisme</button>
+        <button class="qcm-choice" onclick="checkQCM('q1',this,true)">Le judaïsme</button>
+        <button class="qcm-choice" onclick="checkQCM('q1',this,false)">L'islam</button>
+        <button class="qcm-choice" onclick="checkQCM('q1',this,false)">Le polythéisme</button>
+      </div>
+      <div class="qcm-feedback" id="q1-fb"></div>
+    </div>
+
+    <div class="qcm-question" id="q2">
+      <p>2. Comment s'appelle le dieu unique des Hébreux ?</p>
+      <div class="qcm-choices">
+        <button class="qcm-choice" onclick="checkQCM('q2',this,false)">Zeus</button>
+        <button class="qcm-choice" onclick="checkQCM('q2',this,false)">Abraham</button>
+        <button class="qcm-choice" onclick="checkQCM('q2',this,true)">Yahvé</button>
+        <button class="qcm-choice" onclick="checkQCM('q2',this,false)">David</button>
+      </div>
+      <div class="qcm-feedback" id="q2-fb"></div>
+    </div>
+
+    <div class="qcm-question" id="q3">
+      <p>3. Qu'est-ce que la Torah ?</p>
+      <div class="qcm-choices">
+        <button class="qcm-choice" onclick="checkQCM('q3',this,false)">Le nom du dieu des Hébreux</button>
+        <button class="qcm-choice" onclick="checkQCM('q3',this,false)">Le lieu de prière des Juifs</button>
+        <button class="qcm-choice" onclick="checkQCM('q3',this,true)">Les 5 premiers livres de la Bible contenant les lois de Dieu</button>
+        <button class="qcm-choice" onclick="checkQCM('q3',this,false)">Le jour de repos des Juifs</button>
+      </div>
+      <div class="qcm-feedback" id="q3-fb"></div>
+    </div>
+
+    <div class="qcm-question" id="q4">
+      <p>4. Qu'est-ce que la Diaspora ?</p>
+      <div class="qcm-choices">
+        <button class="qcm-choice" onclick="checkQCM('q4',this,false)">Le temple de Jérusalem</button>
+        <button class="qcm-choice" onclick="checkQCM('q4',this,true)">La dispersion du peuple juif hors de sa terre d'origine</button>
+        <button class="qcm-choice" onclick="checkQCM('q4',this,false)">L'alliance entre Dieu et Abraham</button>
+        <button class="qcm-choice" onclick="checkQCM('q4',this,false)">Le livre sacré des Hébreux</button>
+      </div>
+      <div class="qcm-feedback" id="q4-fb"></div>
+    </div>
+
+    <div class="qcm-question" id="q5">
+      <p>5. Quel roi a fondé le royaume hébreu selon les historiens ?</p>
+      <div class="qcm-choices">
+        <button class="qcm-choice" onclick="checkQCM('q5',this,false)">Abraham</button>
+        <button class="qcm-choice" onclick="checkQCM('q5',this,false)">Josias</button>
+        <button class="qcm-choice" onclick="checkQCM('q5',this,true)">David</button>
+        <button class="qcm-choice" onclick="checkQCM('q5',this,false)">Moïse</button>
+      </div>
+      <div class="qcm-feedback" id="q5-fb"></div>
+    </div>
+  </div>
+
+  <!-- VRAI FAUX -->
+  <div class="exo-section">
+    <div class="exo-title">✅ Vrai ou Faux ?</div>
+    <div class="vf-question" data-answer="vrai">
+      <div class="vf-text">1. Les Hébreux croyaient en un seul dieu : Yahvé.</div>
+      <div class="vf-btns">
+        <button class="vf-btn" onclick="checkVF(this,'vrai')">✅ Vrai</button>
+        <button class="vf-btn" onclick="checkVF(this,'faux')">❌ Faux</button>
+      </div>
+    </div>
+    <div class="vf-question" data-answer="faux">
+      <div class="vf-text">2. Les peuples autour des Hébreux étaient monothéistes.</div>
+      <div class="vf-btns">
+        <button class="vf-btn" onclick="checkVF(this,'vrai')">✅ Vrai</button>
+        <button class="vf-btn" onclick="checkVF(this,'faux')">❌ Faux</button>
+      </div>
+    </div>
+    <div class="vf-question" data-answer="vrai">
+      <div class="vf-text">3. La Torah désigne les 5 premiers livres de la Bible.</div>
+      <div class="vf-btns">
+        <button class="vf-btn" onclick="checkVF(this,'vrai')">✅ Vrai</button>
+        <button class="vf-btn" onclick="checkVF(this,'faux')">❌ Faux</button>
+      </div>
+    </div>
+    <div class="vf-question" data-answer="faux">
+      <div class="vf-text">4. La Synagogue est un coffre contenant les 10 Commandements.</div>
+      <div class="vf-btns">
+        <button class="vf-btn" onclick="checkVF(this,'vrai')">✅ Vrai</button>
+        <button class="vf-btn" onclick="checkVF(this,'faux')">❌ Faux</button>
+      </div>
+    </div>
+    <div class="vf-question" data-answer="vrai">
+      <div class="vf-text">5. Les Babyloniens ont attaqué les Hébreux et emmené une partie d'entre eux en exil.</div>
+      <div class="vf-btns">
+        <button class="vf-btn" onclick="checkVF(this,'vrai')">✅ Vrai</button>
+        <button class="vf-btn" onclick="checkVF(this,'faux')">❌ Faux</button>
+      </div>
+    </div>
+    <div class="vf-question" data-answer="faux">
+      <div class="vf-text">6. Le Shabbat est le lieu de culte des Juifs.</div>
+      <div class="vf-btns">
+        <button class="vf-btn" onclick="checkVF(this,'vrai')">✅ Vrai</button>
+        <button class="vf-btn" onclick="checkVF(this,'faux')">❌ Faux</button>
+      </div>
+    </div>
+    <button class="btn-check" onclick="checkAllVF()">Vérifier mes réponses 🔍</button>
+    <button class="btn-reset" onclick="resetVF()">Recommencer</button>
+    <div class="result-msg" id="vf-result"></div>
+  </div>
+
+  <!-- ASSOCIER -->
+  <div class="exo-section">
+    <div class="exo-title">🔗 Associe le mot à sa définition</div>
+    <div class="drag-container">
+      <p>Clique sur un mot à gauche puis sur sa définition à droite !</p>
+      <div class="match-container">
+        <div class="match-col" id="match-words">
+          <div class="match-item" data-id="1" onclick="selectMatch(this,'word')">Diaspora</div>
+          <div class="match-item" data-id="2" onclick="selectMatch(this,'word')">Shabbat</div>
+          <div class="match-item" data-id="3" onclick="selectMatch(this,'word')">Rabbin</div>
+          <div class="match-item" data-id="4" onclick="selectMatch(this,'word')">Alliance</div>
+          <div class="match-item" data-id="5" onclick="selectMatch(this,'word')">Torah</div>
+        </div>
+        <div class="match-col" id="match-defs">
+          <div class="match-item" data-id="3" onclick="selectMatch(this,'def')">Maître religieux juif qui guide les fidèles</div>
+          <div class="match-item" data-id="5" onclick="selectMatch(this,'def')">Les 5 premiers livres de la Bible (la Loi)</div>
+          <div class="match-item" data-id="1" onclick="selectMatch(this,'def')">Dispersion des Juifs hors de leur terre d'origine</div>
+          <div class="match-item" data-id="4" onclick="selectMatch(this,'def')">Pacte entre Yahvé et le peuple hébreu</div>
+          <div class="match-item" data-id="2" onclick="selectMatch(this,'def')">Jour de repos et de prière du vendredi au samedi soir</div>
+        </div>
+      </div>
+      <button class="btn-reset" onclick="resetMatch()">Recommencer</button>
+      <div class="result-msg" id="match-result"></div>
+    </div>
+  </div>
+
+  <!-- REMETTRE DANS L'ORDRE -->
+  <div class="exo-section">
+    <div class="exo-title">🔢 Remets ces événements dans l'ordre chronologique</div>
+    <div class="drag-container">
+      <p>Glisse les événements du plus ancien au plus récent :</p>
+      <div class="order-list" id="order-list">
+        <div class="order-item" draggable="true" data-pos="3"><span class="order-handle">☰</span> Les Babyloniens attaquent et emmènent des Hébreux en exil</div>
+        <div class="order-item" draggable="true" data-pos="1"><span class="order-handle">☰</span> Alliance de Yahvé avec Abraham → installation en Canaan</div>
+        <div class="order-item" draggable="true" data-pos="4"><span class="order-handle">☰</span> Les Romains détruisent le temple de Jérusalem</div>
+        <div class="order-item" draggable="true" data-pos="2"><span class="order-handle">☰</span> Fondation du royaume hébreu par le roi David</div>
+      </div>
+      <button class="btn-check" onclick="checkOrder()">Vérifier l'ordre ✅</button>
+      <button class="btn-reset" onclick="resetOrder()">Mélanger à nouveau</button>
+      <div class="result-msg" id="order-result"></div>
+    </div>
+  </div>
+
+  <!-- GLISSER DEPOSER -->
+  <div class="exo-section">
+    <div class="exo-title">🧩 Glisse le bon mot dans la bonne case</div>
+    <div class="drag-container">
+      <p>Complète les phrases avec les mots proposés :</p>
+      <div class="drag-words" id="drag-bank">
+        <div class="drag-word" draggable="true" data-word="Yahvé">Yahvé</div>
+        <div class="drag-word" draggable="true" data-word="Synagogue">Synagogue</div>
+        <div class="drag-word" draggable="true" data-word="Diaspora">Diaspora</div>
+        <div class="drag-word" draggable="true" data-word="Torah">Torah</div>
+        <div class="drag-word" draggable="true" data-word="Abraham">Abraham</div>
+      </div>
+      <div class="drag-slots">
+        <div class="drag-slot">
+          <span class="slot-label">Phrase 1 :</span>
+          <div>Le dieu unique des Hébreux s'appelle <div class="slot-drop" data-answer="Yahvé" ondrop="dropWord(event,this)" ondragover="event.preventDefault();this.classList.add('drag-over')" ondragleave="this.classList.remove('drag-over')"></div>.</div>
+        </div>
+        <div class="drag-slot">
+          <span class="slot-label">Phrase 2 :</span>
+          <div>Dieu fait une alliance avec <div class="slot-drop" data-answer="Abraham" ondrop="dropWord(event,this)" ondragover="event.preventDefault();this.classList.add('drag-over')" ondragleave="this.classList.remove('drag-over')"></div> et lui promet la Terre de Canaan.</div>
+        </div>
+        <div class="drag-slot">
+          <span class="slot-label">Phrase 3 :</span>
+          <div>La <div class="slot-drop" data-answer="Torah" ondrop="dropWord(event,this)" ondragover="event.preventDefault();this.classList.add('drag-over')" ondragleave="this.classList.remove('drag-over')"></div> contient les lois données par Dieu dans les 5 premiers livres de la Bible.</div>
+        </div>
+        <div class="drag-slot">
+          <span class="slot-label">Phrase 4 :</span>
+          <div>Les Juifs se réunissent pour prier à la <div class="slot-drop" data-answer="Synagogue" ondrop="dropWord(event,this)" ondragover="event.preventDefault();this.classList.add('drag-over')" ondragleave="this.classList.remove('drag-over')"></div>.</div>
+        </div>
+        <div class="drag-slot">
+          <span class="slot-label">Phrase 5 :</span>
+          <div>La <div class="slot-drop" data-answer="Diaspora" ondrop="dropWord(event,this)" ondragover="event.preventDefault();this.classList.add('drag-over')" ondragleave="this.classList.remove('drag-over')"></div> désigne la dispersion des Juifs hors de leur terre.</div>
+        </div>
+      </div>
+      <button class="btn-check" onclick="checkDrag()">Vérifier ✅</button>
+      <button class="btn-reset" onclick="resetDrag()">Recommencer</button>
+      <div class="result-msg" id="drag-result"></div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ===================== FLASHCARDS ===================== -->
+<div id="tab-flashcards" class="tab-content">
+<div class="container">
+  <div class="section-title">🃏 Flashcards – Clique pour retourner la carte !</div>
+  <p style="color:var(--text-light); margin-bottom:20px; font-size:0.93rem;">Lis la question, essaie de répondre dans ta tête, puis clique 🔄</p>
+
+  <div class="flashcards-grid">
+    <div class="flashcard" onclick="this.classList.toggle('flipped')">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">Qu'est-ce que le monothéisme ? ☝️</div>
+        <div class="flashcard-back">Croire en un seul dieu. Les Hébreux ne croient qu'en Yahvé.</div>
+      </div>
+    </div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">C'est quoi le polythéisme ? 🏛️</div>
+        <div class="flashcard-back">Croire en plusieurs dieux. C'était le cas de presque tous les peuples de l'époque.</div>
+      </div>
+    </div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">Qu'est-ce que la Torah ? 📜</div>
+        <div class="flashcard-back">Les 5 premiers livres de la Bible. "Torah" signifie "loi" en hébreu.</div>
+      </div>
+    </div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">C'est quoi la Terre Promise ? 🌍</div>
+        <div class="flashcard-back">Le pays de Canaan (Palestine actuelle) que Dieu promet à Abraham et ses descendants.</div>
+      </div>
+    </div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">C'est quoi la Diaspora ? 🌐</div>
+        <div class="flashcard-back">La dispersion des Juifs hors de leur terre d'origine, autour de la Méditerranée.</div>
+      </div>
+    </div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">C'est quoi une Alliance ? 🤝</div>
+        <div class="flashcard-back">Un pacte entre Yahvé et le peuple hébreu : Dieu les protège, ils lui restent fidèles.</div>
+      </div>
+    </div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">C'est quoi le Shabbat ? 🌙</div>
+        <div class="flashcard-back">Le jour de repos et de prière, du vendredi soir au samedi soir.</div>
+      </div>
+    </div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">C'est quoi une Synagogue ? 🕍</div>
+        <div class="flashcard-back">Le lieu de culte juif où les fidèles prient et lisent la Bible.</div>
+      </div>
+    </div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">Qui est le Rabbin ? 🎓</div>
+        <div class="flashcard-back">Le maître religieux juif, spécialiste de la Bible et de la Loi, qui guide les fidèles.</div>
+      </div>
+    </div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">Qui a fondé le royaume hébreu ? 👑</div>
+        <div class="flashcard-back">Le roi David, selon les historiens. Il avait son temple à Jérusalem.</div>
+      </div>
+    </div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">Qui a attaqué les Hébreux et les a exilés ? ⚔️</div>
+        <div class="flashcard-back">Les Babyloniens. Une partie des Hébreux a été emmenée en exil à Babylone.</div>
+      </div>
+    </div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">C'est quoi l'Arche d'Alliance ? 📦</div>
+        <div class="flashcard-back">Un coffre en bois contenant les Tables de la Loi : les 10 Commandements de Dieu.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<script>
+// ===== TABS =====
+function showTab(name, btn) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  if (btn) btn.classList.add('active');
+}
+
+// ===== QCM =====
+function checkQCM(qId, btn, isCorrect) {
+  var q = document.getElementById(qId);
+  if (q.dataset.done) return;
+  q.dataset.done = '1';
+  q.querySelectorAll('.qcm-choice').forEach(function(b) { b.disabled = true; });
+  var fb = document.getElementById(qId + '-fb');
+  fb.classList.add('show');
+  if (isCorrect) {
+    btn.classList.add('correct');
+    fb.textContent = '🎉 Bravo, c\'est la bonne réponse !';
+    fb.classList.add('ok');
+  } else {
+    btn.classList.add('wrong');
+    q.querySelectorAll('.qcm-choice').forEach(function(b) {
+      if (b.getAttribute('onclick').includes('true')) b.classList.add('correct');
+    });
+    fb.textContent = '❌ Pas tout à fait... La bonne réponse est en vert !';
+    fb.classList.add('ko');
+  }
+}
+
+// ===== VRAI FAUX =====
+function checkVF(btn, answer) {
+  var q = btn.closest('.vf-question');
+  if (q.dataset.done) return;
+  q.dataset.selected = answer;
+  q.querySelectorAll('.vf-btn').forEach(function(b) { b.classList.remove('selected-vrai','selected-faux'); });
+  btn.classList.add(answer === 'vrai' ? 'selected-vrai' : 'selected-faux');
+}
+function checkAllVF() {
+  var questions = document.querySelectorAll('.vf-question');
+  var score = 0;
+  questions.forEach(function(q) {
+    var answer = q.dataset.answer;
+    var selected = q.dataset.selected;
+    q.dataset.done = '1';
+    q.querySelectorAll('.vf-btn').forEach(function(b) {
+      b.classList.remove('selected-vrai','selected-faux');
+      var type = b.getAttribute('onclick').includes("'vrai'") ? 'vrai' : 'faux';
+      if (type === answer) b.classList.add('correct-btn');
+      else if (type === selected && selected !== answer) b.classList.add('wrong-btn');
+    });
+    if (selected === answer) score++;
+  });
+  var res = document.getElementById('vf-result');
+  res.classList.add('show');
+  if (score === questions.length) {
+    res.textContent = '🏆 Parfait ! ' + score + '/' + questions.length + ' – Tout bon !';
+    res.className = 'result-msg show ok';
+  } else if (score >= questions.length / 2) {
+    res.textContent = '👍 Pas mal ! ' + score + '/' + questions.length + '. Relis les réponses en vert.';
+    res.className = 'result-msg show partial';
+  } else {
+    res.textContent = '💪 ' + score + '/' + questions.length + '. Relis le cours et réessaie !';
+    res.className = 'result-msg show ko';
+  }
+}
+function resetVF() {
+  document.querySelectorAll('.vf-question').forEach(function(q) {
+    delete q.dataset.done; delete q.dataset.selected;
+    q.querySelectorAll('.vf-btn').forEach(function(b) { b.className = 'vf-btn'; });
+  });
+  var res = document.getElementById('vf-result');
+  res.className = 'result-msg'; res.textContent = '';
+}
+
+// ===== ASSOCIER =====
+var matchSelected = { word: null, def: null };
+var matchDone = {};
+function selectMatch(el, type) {
+  if (el.classList.contains('matched-ok')) return;
+  var cols = type === 'word' ? '#match-words' : '#match-defs';
+  document.querySelectorAll(cols + ' .match-item').forEach(function(i) {
+    if (!i.classList.contains('matched-ok')) i.classList.remove('selected');
+  });
+  el.classList.add('selected');
+  matchSelected[type] = el;
+  if (matchSelected.word && matchSelected.def) {
+    var wId = matchSelected.word.dataset.id;
+    var dId = matchSelected.def.dataset.id;
+    if (wId === dId) {
+      matchSelected.word.classList.remove('selected'); matchSelected.def.classList.remove('selected');
+      matchSelected.word.classList.add('matched-ok'); matchSelected.def.classList.add('matched-ok');
+      matchDone[wId] = true;
+      if (Object.keys(matchDone).length === 5) {
+        var res = document.getElementById('match-result');
+        res.textContent = '🏆 Excellent ! Tu as tout associé correctement !';
+        res.className = 'result-msg show ok';
+      }
+    } else {
+      var w = matchSelected.word, d = matchSelected.def;
+      w.classList.add('matched-ko'); d.classList.add('matched-ko');
+      setTimeout(function() { w.classList.remove('matched-ko','selected'); d.classList.remove('matched-ko','selected'); }, 700);
+    }
+    matchSelected = { word: null, def: null };
+  }
+}
+function resetMatch() {
+  matchSelected = { word: null, def: null }; matchDone = {};
+  document.querySelectorAll('.match-item').forEach(function(i) { i.className = 'match-item'; });
+  document.getElementById('match-result').className = 'result-msg';
+  document.getElementById('match-result').textContent = '';
+}
+
+// ===== ORDRE =====
+var dragSrcOrder = null;
+function initOrder() {
+  document.querySelectorAll('.order-item').forEach(function(item) {
+    item.addEventListener('dragstart', function(e) {
+      dragSrcOrder = this; this.classList.add('dragging-o');
+      e.dataTransfer.effectAllowed = 'move';
+    });
+    item.addEventListener('dragend', function() { this.classList.remove('dragging-o'); });
+    item.addEventListener('dragover', function(e) {
+      e.preventDefault();
+      var list = document.getElementById('order-list');
+      var after = getDragAfterEl(list, e.clientY);
+      if (after == null) list.appendChild(dragSrcOrder);
+      else list.insertBefore(dragSrcOrder, after);
+    });
+  });
+}
+function getDragAfterEl(container, y) {
+  return Array.from(container.querySelectorAll('.order-item:not(.dragging-o)')).reduce(function(closest, el) {
+    var box = el.getBoundingClientRect();
+    var offset = y - box.top - box.height / 2;
+    if (offset < 0 && offset > closest.offset) return { offset: offset, el: el };
+    return closest;
+  }, { offset: Number.NEGATIVE_INFINITY }).el;
+}
+function checkOrder() {
+  var items = document.querySelectorAll('#order-list .order-item');
+  var positions = Array.from(items).map(function(i) { return parseInt(i.dataset.pos); });
+  var correct = true;
+  for (var i = 0; i < positions.length - 1; i++) {
+    if (positions[i] > positions[i+1]) { correct = false; break; }
+  }
+  var res = document.getElementById('order-result');
+  res.classList.add('show');
+  if (correct) {
+    res.textContent = '🎉 Parfait ! L\'ordre est correct !';
+    res.className = 'result-msg show ok';
+  } else {
+    res.textContent = '❌ Pas tout à fait... Le bon ordre : Alliance Abraham → Roi David → Babyloniens → Romains.';
+    res.className = 'result-msg show ko';
+  }
+}
+function resetOrder() {
+  var list = document.getElementById('order-list');
+  var items = Array.from(list.querySelectorAll('.order-item'));
+  for (var i = items.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    list.insertBefore(items[j], items[i]);
+    var tmp = items[i]; items[i] = items[j]; items[j] = tmp;
+  }
+  document.getElementById('order-result').className = 'result-msg';
+  document.getElementById('order-result').textContent = '';
+}
+
+// ===== DRAG & DROP =====
+var draggedWord = null;
+document.addEventListener('DOMContentLoaded', function() {
+  initOrder();
+  document.querySelectorAll('.drag-word').forEach(function(w) {
+    w.addEventListener('dragstart', function(e) {
+      draggedWord = this; this.classList.add('dragging');
+      e.dataTransfer.setData('text/plain', this.dataset.word);
+    });
+    w.addEventListener('dragend', function() { this.classList.remove('dragging'); });
+  });
+});
+function dropWord(e, slot) {
+  e.preventDefault(); slot.classList.remove('drag-over');
+  if (!draggedWord) return;
+  if (slot.querySelector('.drag-word')) {
+    document.getElementById('drag-bank').appendChild(slot.querySelector('.drag-word'));
+  }
+  slot.appendChild(draggedWord); draggedWord = null;
+}
+function checkDrag() {
+  var slots = document.querySelectorAll('.slot-drop');
+  var score = 0;
+  slots.forEach(function(slot) {
+    var word = slot.querySelector('.drag-word');
+    slot.classList.remove('correct-drop','wrong-drop');
+    if (word && word.dataset.word === slot.dataset.answer) { slot.classList.add('correct-drop'); score++; }
+    else slot.classList.add('wrong-drop');
+  });
+  var res = document.getElementById('drag-result');
+  res.classList.add('show');
+  if (score === slots.length) {
+    res.textContent = '🎉 Parfait ! Toutes les cases sont correctes !';
+    res.className = 'result-msg show ok';
+  } else {
+    res.textContent = '💪 ' + score + '/' + slots.length + ' correct(s). Les cases rouges sont à revoir !';
+    res.className = 'result-msg show ' + (score > 0 ? 'partial' : 'ko');
+  }
+}
+function resetDrag() {
+  var bank = document.getElementById('drag-bank');
+  document.querySelectorAll('.slot-drop').forEach(function(slot) {
+    slot.classList.remove('correct-drop','wrong-drop');
+    var word = slot.querySelector('.drag-word');
+    if (word) bank.appendChild(word);
+  });
+  document.getElementById('drag-result').className = 'result-msg';
+  document.getElementById('drag-result').textContent = '';
+}
+</script>
+
+</body>
+</html>

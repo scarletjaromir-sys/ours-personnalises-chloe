@@ -926,6 +926,7 @@ header .subtitle {
         <button class="qcm-choice" onclick="checkQCM('q1',this,false)">Énée</button>
       </div>
       <div class="qcm-feedback" id="q1-fb"></div>
+      <button class="btn-reset" style="margin-top:8px;" onclick="resetQCM('q1')">↺ Recommencer</button>
     </div>
 
     <div class="qcm-question" id="q2">
@@ -937,6 +938,7 @@ header .subtitle {
         <button class="qcm-choice" onclick="checkQCM('q2',this,false)">44 av. J.-C.</button>
       </div>
       <div class="qcm-feedback" id="q2-fb"></div>
+      <button class="btn-reset" style="margin-top:8px;" onclick="resetQCM('q2')">↺ Recommencer</button>
     </div>
 
     <div class="qcm-question" id="q3">
@@ -948,6 +950,7 @@ header .subtitle {
         <button class="qcm-choice" onclick="checkQCM('q3',this,false)">Le palais de l'Empereur</button>
       </div>
       <div class="qcm-feedback" id="q3-fb"></div>
+      <button class="btn-reset" style="margin-top:8px;" onclick="resetQCM('q3')">↺ Recommencer</button>
     </div>
 
     <div class="qcm-question" id="q4">
@@ -959,6 +962,7 @@ header .subtitle {
         <button class="qcm-choice" onclick="checkQCM('q4',this,false)">Un sénateur assassin</button>
       </div>
       <div class="qcm-feedback" id="q4-fb"></div>
+      <button class="btn-reset" style="margin-top:8px;" onclick="resetQCM('q4')">↺ Recommencer</button>
     </div>
   </div>
 
@@ -1013,16 +1017,16 @@ header .subtitle {
     <div class="drag-container">
       <p>Glisse les événements pour les mettre dans le bon ordre (du plus ancien au plus récent) :</p>
       <div class="order-list" id="order-list">
-        <div class="order-item" draggable="true" data-pos="3">
+        <div class="order-item" data-pos="3">
           <span class="order-handle">☰</span> Auguste devient 1er empereur romain
         </div>
-        <div class="order-item" draggable="true" data-pos="1">
+        <div class="order-item" data-pos="1">
           <span class="order-handle">☰</span> Fondation de Rome par Romulus (légende)
         </div>
-        <div class="order-item" draggable="true" data-pos="4">
+        <div class="order-item" data-pos="4">
           <span class="order-handle">☰</span> Assassinat de Jules César
         </div>
-        <div class="order-item" draggable="true" data-pos="2">
+        <div class="order-item" data-pos="2">
           <span class="order-handle">☰</span> La République remplace la Royauté
         </div>
       </div>
@@ -1062,11 +1066,11 @@ header .subtitle {
     <div class="drag-container">
       <p>Complète les phrases avec les mots proposés :</p>
       <div class="drag-words" id="drag-bank">
-        <div class="drag-word" draggable="true" data-word="509">509</div>
-        <div class="drag-word" draggable="true" data-word="Méditerranée">Méditerranée</div>
-        <div class="drag-word" draggable="true" data-word="César">César</div>
-        <div class="drag-word" draggable="true" data-word="753">753</div>
-        <div class="drag-word" draggable="true" data-word="Romulus">Romulus</div>
+        <div class="drag-word" data-word="509">509</div>
+        <div class="drag-word" data-word="Méditerranée">Méditerranée</div>
+        <div class="drag-word" data-word="César">César</div>
+        <div class="drag-word" data-word="753">753</div>
+        <div class="drag-word" data-word="Romulus">Romulus</div>
       </div>
       <div class="drag-slots">
         <div class="drag-slot">
@@ -1177,6 +1181,18 @@ function showTab(name) {
 }
 
 // ======= QCM =======
+function resetQCM(qId) {
+  var q = document.getElementById(qId);
+  delete q.dataset.done;
+  q.querySelectorAll('.qcm-choice').forEach(function(b) {
+    b.disabled = false;
+    b.classList.remove('correct', 'wrong');
+  });
+  var fb = document.getElementById(qId + '-fb');
+  fb.className = 'qcm-feedback';
+  fb.textContent = '';
+}
+
 function checkQCM(qId, btn, isCorrect) {
   var q = document.getElementById(qId);
   if (q.dataset.done) return;
@@ -1371,37 +1387,104 @@ function resetMatch() {
   document.getElementById('match-result').textContent = '';
 }
 
-// ======= DRAG AND DROP =======
-var draggedWord = null;
+// ======= DRAG & DROP MOTS (souris + tactile) =======
+// Principe : clone flottant qui suit le curseur/doigt,
+// on détecte le slot cible avec elementFromPoint au relâcher.
+
+var _dw = null;       // mot en cours de déplacement
+var _clone = null;    // clone visuel flottant
+var _offX = 0;        // offset doigt/curseur dans l'élément
+var _offY = 0;
 
 document.addEventListener('DOMContentLoaded', function() {
-  initDrag();
   initOrder();
+  initDragWords();
 });
 
-function initDrag() {
-  document.querySelectorAll('.drag-word').forEach(function(w) {
-    w.addEventListener('dragstart', function(e) {
-      draggedWord = this;
-      this.classList.add('dragging');
-      e.dataTransfer.setData('text/plain', this.dataset.word);
-    });
-    w.addEventListener('dragend', function() {
-      this.classList.remove('dragging');
-    });
-  });
+function initDragWords() {
+  document.querySelectorAll('.drag-word').forEach(attachDragWord);
 }
 
-function dropWord(e, slot) {
+function attachDragWord(w) {
+  w.style.userSelect = 'none';
+  w.style.webkitUserSelect = 'none';
+  w.style.touchAction = 'none';
+  w.addEventListener('mousedown', onDragStart);
+  w.addEventListener('touchstart', onDragStart, { passive: false });
+}
+
+function onDragStart(e) {
   e.preventDefault();
-  slot.classList.remove('drag-over');
-  if (!draggedWord) return;
-  // Return previous word to bank if slot was filled
-  if (slot.querySelector('.drag-word')) {
-    document.getElementById('drag-bank').appendChild(slot.querySelector('.drag-word'));
+  _dw = this;
+  var pt = e.touches ? e.touches[0] : e;
+  var box = _dw.getBoundingClientRect();
+  _offX = pt.clientX - box.left;
+  _offY = pt.clientY - box.top;
+
+  // Clone flottant
+  _clone = _dw.cloneNode(true);
+  _clone.style.cssText = [
+    'position:fixed',
+    'pointer-events:none',
+    'z-index:9999',
+    'opacity:0.9',
+    'transform:scale(1.08)',
+    'transition:none',
+    'left:' + (pt.clientX - _offX) + 'px',
+    'top:' + (pt.clientY - _offY) + 'px',
+    'width:' + box.width + 'px',
+    'box-shadow:0 6px 20px rgba(142,68,173,0.4)'
+  ].join(';');
+  document.body.appendChild(_clone);
+  _dw.style.opacity = '0.25';
+}
+
+document.addEventListener('mousemove', onDragMove);
+document.addEventListener('touchmove', onDragMove, { passive: false });
+
+function onDragMove(e) {
+  if (!_clone) return;
+  e.preventDefault();
+  var pt = e.touches ? e.touches[0] : e;
+  _clone.style.left = (pt.clientX - _offX) + 'px';
+  _clone.style.top  = (pt.clientY - _offY) + 'px';
+}
+
+document.addEventListener('mouseup', onDragEnd);
+document.addEventListener('touchend', onDragEnd);
+
+function onDragEnd(e) {
+  if (!_clone) return;
+  var pt = e.changedTouches ? e.changedTouches[0] : e;
+
+  // Cacher le clone pour pouvoir détecter ce qui est en dessous
+  _clone.style.display = 'none';
+  var under = document.elementFromPoint(pt.clientX, pt.clientY);
+  _clone.style.display = '';
+
+  var slot = under ? under.closest('.slot-drop') : null;
+
+  if (slot) {
+    // Si le slot est déjà occupé, renvoyer l'ancien mot à la banque
+    var existing = slot.querySelector('.drag-word');
+    if (existing && existing !== _dw) {
+      existing.style.opacity = '1';
+      document.getElementById('drag-bank').appendChild(existing);
+      attachDragWord(existing);
+    }
+    slot.appendChild(_dw);
+    // Flash visuel
+    slot.style.background = '#ede4f5';
+    setTimeout(function() { slot.style.background = ''; }, 300);
+  } else {
+    // Pas de slot : retour à la banque
+    document.getElementById('drag-bank').appendChild(_dw);
   }
-  slot.appendChild(draggedWord);
-  draggedWord = null;
+
+  _dw.style.opacity = '1';
+  document.body.removeChild(_clone);
+  _clone = null;
+  _dw = null;
 }
 
 function checkDrag() {
@@ -1411,14 +1494,12 @@ function checkDrag() {
     var word = slot.querySelector('.drag-word');
     slot.classList.remove('correct-drop','wrong-drop');
     if (word && word.dataset.word === slot.dataset.answer) {
-      slot.classList.add('correct-drop');
-      score++;
+      slot.classList.add('correct-drop'); score++;
     } else {
       slot.classList.add('wrong-drop');
     }
   });
   var res = document.getElementById('drag-result');
-  res.classList.add('show');
   if (score === slots.length) {
     res.textContent = '🎉 Parfait ! Toutes les cases sont correctes !';
     res.className = 'result-msg show ok';
@@ -1433,7 +1514,7 @@ function resetDrag() {
   document.querySelectorAll('.slot-drop').forEach(function(slot) {
     slot.classList.remove('correct-drop','wrong-drop');
     var word = slot.querySelector('.drag-word');
-    if (word) bank.appendChild(word);
+    if (word) { word.style.opacity = '1'; bank.appendChild(word); }
   });
   document.getElementById('drag-result').className = 'result-msg';
   document.getElementById('drag-result').textContent = '';

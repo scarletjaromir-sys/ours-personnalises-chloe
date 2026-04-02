@@ -455,13 +455,12 @@ header .subtitle {
 .order-handle { color: var(--violet-light); font-size: 1.1rem; }
 
 /* ASSOCIER */
-.match-container {
+.match-flat {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-bottom: 14px;
+  gap: 8px;
+  margin-bottom: 4px;
 }
-.match-col { display: flex; flex-direction: column; gap: 8px; }
 .match-item {
   background: #fff;
   border: 2px solid #e8d5f5;
@@ -472,11 +471,42 @@ header .subtitle {
   cursor: pointer;
   transition: all 0.18s;
   text-align: center;
+  line-height: 1.4;
 }
-.match-item:hover { border-color: var(--violet); background: var(--violet-pale); }
-.match-item.selected { background: var(--violet); color: #fff; border-color: var(--violet-dark); }
-.match-item.matched-ok { background: #eafaf1; border-color: var(--vert); color: #1a7a47; }
-.match-item.matched-ko { background: #fdf0ee; border-color: var(--rouge); color: #a93226; }
+/* Mots : couleur visible, Defs : neutre */
+.match-word { border-style: solid; font-weight: 800; }
+.match-def  { border-color: #e8d5f5; border-style: dashed; background: #fff; }
+
+/* Couleur UNIQUEMENT sur les mots */
+.match-word[data-color="1"] { background: #fde8e8; border-color: #e74c3c; color: #c0392b; }
+.match-word[data-color="2"] { background: #fef0e0; border-color: #e67e22; color: #d35400; }
+.match-word[data-color="3"] { background: #e8f4fd; border-color: #3498db; color: #2980b9; }
+.match-word[data-color="4"] { background: #e8f8f0; border-color: #27ae60; color: #1e8449; }
+
+/* Hover neutre sur les defs */
+.match-def:hover { border-color: var(--violet); background: var(--violet-pale); }
+/* Hover sur les mots */
+.match-word:hover { opacity: 0.8; }
+
+/* Mot sélectionné : plus intense */
+.match-word.selected { color: #fff !important; border-style: solid !important; }
+.match-word[data-color="1"].selected { background: #e74c3c !important; border-color: #c0392b !important; }
+.match-word[data-color="2"].selected { background: #e67e22 !important; border-color: #d35400 !important; }
+.match-word[data-color="3"].selected { background: #3498db !important; border-color: #2980b9 !important; }
+.match-word[data-color="4"].selected { background: #27ae60 !important; border-color: #1e8449 !important; }
+
+/* Def sélectionnée : violet neutre */
+.match-def.selected { background: var(--violet); color: #fff; border-color: var(--violet-dark); border-style: solid !important; }
+
+/* Validé : les DEUX prennent la couleur */
+.match-item.matched-ok { color: #fff !important; border-style: solid !important; opacity: 1; }
+.match-item[data-color="1"].matched-ok { background: #e74c3c !important; border-color: #c0392b !important; }
+.match-item[data-color="2"].matched-ok { background: #e67e22 !important; border-color: #d35400 !important; }
+.match-item[data-color="3"].matched-ok { background: #3498db !important; border-color: #2980b9 !important; }
+.match-item[data-color="4"].matched-ok { background: #27ae60 !important; border-color: #1e8449 !important; }
+
+/* Erreur */
+.match-item.matched-ko { background: #fdf0ee !important; border-color: var(--rouge) !important; color: #a93226 !important; }
 
 /* FLASHCARDS */
 .flashcards-grid {
@@ -673,7 +703,9 @@ header .subtitle {
   .order-item { font-size: 0.85rem; padding: 9px 12px; }
 
   /* Associer : 1 colonne */
-  .match-container { grid-template-columns: 1fr; }
+  .match-flat { grid-template-columns: 1fr; }
+  .match-word { border-radius: 12px 12px 0 0; margin-bottom: 0; }
+  .match-def  { border-radius: 0 0 12px 12px; margin-top: -4px; margin-bottom: 10px; }
   .match-item { font-size: 0.82rem; }
 
   /* Flashcards : 2 colonnes */
@@ -1038,24 +1070,20 @@ header .subtitle {
 
   <!-- ASSOCIER -->
   <div class="exo-section">
-    <div class="exo-title">🔗 Associe le mot à sa définition</div>
+    <div class="exo-title">🔗 Associe chaque mot à sa définition</div>
     <div class="drag-container">
-      <p>Clique sur un mot à gauche puis sur sa définition à droite pour les associer !</p>
-      <div class="match-container">
-        <div class="match-col" id="match-words">
-          <div class="match-item" data-id="1" onclick="selectMatch(this,'word')">Forum</div>
-          <div class="match-item" data-id="2" onclick="selectMatch(this,'word')">Auguste</div>
-          <div class="match-item" data-id="3" onclick="selectMatch(this,'word')">République</div>
-          <div class="match-item" data-id="4" onclick="selectMatch(this,'word')">Mythe</div>
-        </div>
-        <div class="match-col" id="match-defs">
-          <div class="match-item" data-id="3" onclick="selectMatch(this,'def')">Gouvernement sans roi avec des élus</div>
-          <div class="match-item" data-id="1" onclick="selectMatch(this,'def')">Grande place publique de Rome</div>
-          <div class="match-item" data-id="4" onclick="selectMatch(this,'def')">Histoire imaginée sur des dieux ou héros</div>
-          <div class="match-item" data-id="2" onclick="selectMatch(this,'def')">1er empereur romain</div>
-        </div>
+      <p>Appuie sur un mot 🟦 puis sur sa définition pour les associer. Chaque paire a la même couleur !</p>
+      <div class="match-flat" id="match-flat">
+        <div class="match-item match-word" data-id="1" data-color="1" onclick="selectMatch(this,'word')">Forum</div>
+        <div class="match-item match-def"  data-id="1" data-color="1" onclick="selectMatch(this,'def')">Grande place publique de Rome</div>
+        <div class="match-item match-word" data-id="2" data-color="2" onclick="selectMatch(this,'word')">Auguste</div>
+        <div class="match-item match-def"  data-id="2" data-color="2" onclick="selectMatch(this,'def')">1er empereur romain</div>
+        <div class="match-item match-word" data-id="3" data-color="3" onclick="selectMatch(this,'word')">République</div>
+        <div class="match-item match-def"  data-id="3" data-color="3" onclick="selectMatch(this,'def')">Gouvernement sans roi avec des élus</div>
+        <div class="match-item match-word" data-id="4" data-color="4" onclick="selectMatch(this,'word')">Mythe</div>
+        <div class="match-item match-def"  data-id="4" data-color="4" onclick="selectMatch(this,'def')">Histoire imaginée sur des dieux ou héros</div>
       </div>
-      <button class="btn-reset" onclick="resetMatch()">Recommencer</button>
+      <button class="btn-reset" style="margin-top:14px;" onclick="resetMatch()">Recommencer</button>
       <div class="result-msg" id="match-result"></div>
     </div>
   </div>
@@ -1273,34 +1301,85 @@ function resetVF() {
 // ======= ORDRE =======
 var dragSrcOrder = null;
 function initOrder() {
-  var items = document.querySelectorAll('.order-item');
-  items.forEach(function(item) {
-    item.addEventListener('dragstart', function(e) {
-      dragSrcOrder = this;
-      this.classList.add('dragging-o');
-      e.dataTransfer.effectAllowed = 'move';
-    });
-    item.addEventListener('dragend', function() {
-      this.classList.remove('dragging-o');
-    });
-    item.addEventListener('dragover', function(e) {
-      e.preventDefault();
-      var list = document.getElementById('order-list');
-      var afterEl = getDragAfterEl(list, e.clientY);
-      if (afterEl == null) list.appendChild(dragSrcOrder);
-      else list.insertBefore(dragSrcOrder, afterEl);
-    });
-  });
-}
+  var list = document.getElementById('order-list');
+  var _ord = null;      // élément en cours de drag
+  var _ph = null;       // placeholder
+  var _startY = 0;
+  var _startTop = 0;
 
-function getDragAfterEl(container, y) {
-  var els = Array.from(container.querySelectorAll('.order-item:not(.dragging-o)'));
-  return els.reduce(function(closest, el) {
-    var box = el.getBoundingClientRect();
-    var offset = y - box.top - box.height / 2;
-    if (offset < 0 && offset > closest.offset) return { offset: offset, el: el };
-    return closest;
-  }, { offset: Number.NEGATIVE_INFINITY }).el;
+  function getItemAtY(y) {
+    var items = Array.from(list.querySelectorAll('.order-item')).filter(function(i) { return i !== _ord; });
+    for (var i = 0; i < items.length; i++) {
+      var box = items[i].getBoundingClientRect();
+      if (y < box.top + box.height / 2) return items[i];
+    }
+    return null;
+  }
+
+  function startOrd(el, clientY) {
+    _ord = el;
+    _startY = clientY;
+    _startTop = el.getBoundingClientRect().top;
+    el.classList.add('dragging-o');
+    el.style.userSelect = 'none';
+    el.style.webkitUserSelect = 'none';
+
+    // Placeholder
+    _ph = document.createElement('div');
+    _ph.style.cssText = 'height:' + el.offsetHeight + 'px;margin:4px 0;border-radius:12px;border:2px dashed var(--violet-light);background:var(--violet-pale);';
+    el.parentNode.insertBefore(_ph, el.nextSibling);
+
+    // Position fixe
+    var parentBox = list.getBoundingClientRect();
+    el.style.cssText += ';position:fixed;left:' + parentBox.left + 'px;width:' + list.offsetWidth + 'px;top:' + _startTop + 'px;z-index:999;box-shadow:0 8px 24px rgba(142,68,173,0.3);';
+  }
+
+  function moveOrd(clientY) {
+    if (!_ord) return;
+    var dy = clientY - _startY;
+    _ord.style.top = (_startTop + dy) + 'px';
+    var target = getItemAtY(clientY);
+    if (target) list.insertBefore(_ph, target);
+    else list.appendChild(_ph);
+  }
+
+  function endOrd() {
+    if (!_ord) return;
+    _ord.style.cssText = _ord.style.cssText.replace(/position:[^;]+;left:[^;]+;width:[^;]+;top:[^;]+;z-index:[^;]+;box-shadow:[^;]+;/g, '');
+    _ord.style.position = '';
+    _ord.style.left = '';
+    _ord.style.width = '';
+    _ord.style.top = '';
+    _ord.style.zIndex = '';
+    _ord.style.boxShadow = '';
+    _ord.classList.remove('dragging-o');
+    list.insertBefore(_ord, _ph);
+    _ph.parentNode && _ph.parentNode.removeChild(_ph);
+    _ord = null; _ph = null;
+  }
+
+  Array.from(list.querySelectorAll('.order-item')).forEach(function(item) {
+    item.style.userSelect = 'none';
+    item.style.webkitUserSelect = 'none';
+    item.style.touchAction = 'none';
+    item.style.cursor = 'grab';
+
+    item.addEventListener('mousedown', function(e) {
+      e.preventDefault();
+      startOrd(item, e.clientY);
+    });
+    item.addEventListener('touchstart', function(e) {
+      e.preventDefault();
+      startOrd(item, e.touches[0].clientY);
+    }, { passive: false });
+  });
+
+  document.addEventListener('mousemove', function(e) { moveOrd(e.clientY); });
+  document.addEventListener('touchmove', function(e) {
+    if (_ord) { e.preventDefault(); moveOrd(e.touches[0].clientY); }
+  }, { passive: false });
+  document.addEventListener('mouseup', endOrd);
+  document.addEventListener('touchend', endOrd);
 }
 
 function checkOrder() {
@@ -1341,8 +1420,9 @@ var matchDone = {};
 
 function selectMatch(el, type) {
   if (el.classList.contains('matched-ok')) return;
-  var cols = type === 'word' ? '#match-words' : '#match-defs';
-  document.querySelectorAll(cols + ' .match-item').forEach(function(i) {
+  // Désélectionner les autres du même type
+  var selector = type === 'word' ? '.match-word' : '.match-def';
+  document.querySelectorAll(selector).forEach(function(i) {
     if (!i.classList.contains('matched-ok')) i.classList.remove('selected');
   });
   el.classList.add('selected');

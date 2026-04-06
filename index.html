@@ -115,7 +115,13 @@
 <div class="container">
 
   <div class="matiere-title">🌿 SVT</div>
-  <div class="cours-grid"><div class="empty">Bientôt disponible...</div></div>
+  <div class="cours-grid">
+    <a href="svt/fleur-fruit-pollinisation.html" class="cours-card svt">
+      <span class="emoji">🌸</span>
+      <div class="titre">De la fleur au fruit – La pollinisation</div>
+      <div class="niveau">6ème – Mission 4</div>
+    </a>
+  </div>
 
   <div class="matiere-title">➕ Mathématiques</div>
   <div class="cours-grid"><div class="empty">Bientôt disponible...</div></div>
@@ -166,21 +172,21 @@
 <footer>Créé avec ❤️ – personnalisé pour toi</footer>
 
 <script>
-  window.addEventListener('DOMContentLoaded', () => {
-    const prenom = localStorage.getItem('prenom');
+  window.addEventListener('DOMContentLoaded', function() {
+    var prenom = localStorage.getItem('prenom');
     if (prenom === null) {
       document.getElementById('modal-prenom').classList.add('visible');
     } else {
       afficherPrenom(prenom);
     }
-    document.getElementById('input-prenom').addEventListener('keydown', (e) => {
+    document.getElementById('input-prenom').addEventListener('keydown', function(e) {
       if (e.key === 'Enter') validerPrenom();
     });
   });
 
   function validerPrenom() {
-    const input = document.getElementById('input-prenom');
-    const prenom = input.value.trim();
+    var input = document.getElementById('input-prenom');
+    var prenom = input.value.trim();
     localStorage.setItem('prenom', prenom);
     afficherPrenom(prenom);
     document.getElementById('modal-prenom').classList.remove('visible');
@@ -194,22 +200,22 @@
   }
 
   function afficherPrenom(prenom) {
-    const titre = document.getElementById('titre-cours');
-    const pageTitle = document.getElementById('page-title');
+    var titre = document.getElementById('titre-cours');
+    var pageTitle = document.getElementById('page-title');
     if (prenom) {
       titre.textContent = 'Cours de ' + prenom;
-      pageTitle.textContent = 'Cours de ' + prenom + ' 📚';
+      pageTitle.textContent = 'Cours de ' + prenom + ' \uD83D\uDCDA';
     } else {
       titre.textContent = 'Mes cours';
-      pageTitle.textContent = 'Mes cours 📚';
+      pageTitle.textContent = 'Mes cours \uD83D\uDCDA';
     }
   }
 
   function changerPrenom() {
-    const actuel = localStorage.getItem('prenom') || '';
+    var actuel = localStorage.getItem('prenom') || '';
     document.getElementById('input-prenom').value = actuel;
     document.getElementById('modal-prenom').classList.add('visible');
-    setTimeout(() => document.getElementById('input-prenom').focus(), 100);
+    setTimeout(function() { document.getElementById('input-prenom').focus(); }, 100);
   }
 </script>
 

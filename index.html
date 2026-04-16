@@ -1,223 +1,407 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title id="page-title">Mes cours 📚</title>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-<style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Nunito', sans-serif; background: #fef9f0; min-height: 100vh; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="page-title">Mes cours 📚</title>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@400;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-  header {
-    background: linear-gradient(135deg, #2ecc71, #3498db, #8e44ad);
-    padding: 30px 20px; text-align: center;
-  }
-  header h1 { font-family: 'Baloo 2', cursive; font-size: 2.2rem; color: #fff; text-shadow: 2px 2px 8px rgba(0,0,0,0.2); }
-  header p { color: rgba(255,255,255,0.9); margin-top: 6px; font-size: 1.1rem; }
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: #fef9f0;
+      min-height: 100vh;
+    }
 
-  .btn-edit {
-    background: rgba(255,255,255,0.2);
-    border: 2px solid rgba(255,255,255,0.6);
-    color: #fff; padding: 6px 16px;
-    border-radius: 20px; font-family: 'Nunito', sans-serif;
-    font-size: 0.85rem; cursor: pointer; margin-top: 12px;
-    transition: background 0.2s;
-  }
-  .btn-edit:hover { background: rgba(255,255,255,0.35); }
+    header {
+      background: linear-gradient(135deg, #2ecc71, #3498db, #8e44ad);
+      padding: 30px 20px;
+      text-align: center;
+    }
 
-  .modal-overlay {
-    display: none; position: fixed; top: 0; left: 0;
-    width: 100%; height: 100%; background: rgba(0,0,0,0.55);
-    z-index: 100; justify-content: center; align-items: center;
-  }
-  .modal-overlay.visible { display: flex; }
-  .modal-box {
-    background: #fff; border-radius: 20px; padding: 36px 32px;
-    max-width: 360px; width: 90%; text-align: center;
-    box-shadow: 0 12px 40px rgba(0,0,0,0.2);
-  }
-  .modal-box h2 { font-family: 'Baloo 2', cursive; font-size: 1.6rem; color: #2c3e50; margin-bottom: 8px; }
-  .modal-box p { color: #888; font-size: 0.9rem; margin-bottom: 20px; }
-  .modal-box input {
-    width: 100%; padding: 12px 16px;
-    border: 2px solid #e0e0e0; border-radius: 12px;
-    font-family: 'Nunito', sans-serif; font-size: 1.1rem;
-    outline: none; margin-bottom: 16px; transition: border-color 0.2s;
-  }
-  .modal-box input:focus { border-color: #3498db; }
-  .modal-box .btn-valider {
-    width: 100%; padding: 12px;
-    background: linear-gradient(135deg, #3498db, #8e44ad);
-    color: #fff; border: none; border-radius: 12px;
-    font-family: 'Baloo 2', cursive; font-size: 1.1rem;
-    cursor: pointer; transition: opacity 0.2s;
-  }
-  .modal-box .btn-valider:hover { opacity: 0.88; }
-  .modal-box .btn-skip {
-    background: none; border: none; color: #aaa;
-    font-size: 0.85rem; cursor: pointer; margin-top: 10px;
-    font-family: 'Nunito', sans-serif;
-  }
-  .modal-box .btn-skip:hover { color: #888; }
+    header h1 {
+      font-family: 'Baloo 2', cursive;
+      font-size: 2.2rem;
+      color: #fff;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+    }
 
-  .container { max-width: 800px; margin: 30px auto; padding: 0 20px; }
-  .matiere-title {
-    font-family: 'Baloo 2', cursive; font-size: 1.4rem; font-weight: 800;
-    margin: 28px 0 14px; display: flex; align-items: center; gap: 10px;
-    color: #2c3e50; border-bottom: 3px solid #eee; padding-bottom: 8px;
-  }
-  .cours-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; }
-  .cours-card {
-    display: block; text-decoration: none; border-radius: 16px;
-    padding: 20px 18px; box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-    transition: transform 0.2s, box-shadow 0.2s; color: #fff;
-  }
-  .cours-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.18); }
-  .cours-card .emoji { font-size: 2rem; display: block; margin-bottom: 10px; }
-  .cours-card .titre { font-family: 'Baloo 2', cursive; font-size: 1rem; font-weight: 800; line-height: 1.3; }
-  .cours-card .niveau { font-size: 0.8rem; opacity: 0.85; margin-top: 6px; }
-  .empty { color: #bbb; font-style: italic; padding: 10px; }
+    header p {
+      color: rgba(255, 255, 255, 0.9);
+      margin-top: 6px;
+      font-size: 1.1rem;
+    }
 
-  .svt       { background: linear-gradient(135deg, #2ecc71, #27ae60); }
-  .maths     { background: linear-gradient(135deg, #3498db, #2980b9); }
-  .physique  { background: linear-gradient(135deg, #e67e22, #d35400); }
-  .histoire  { background: linear-gradient(135deg, #8e44ad, #6c3483); }
-  .anglais   { background: linear-gradient(135deg, #e74c3c, #c0392b); }
-  .francais  { background: linear-gradient(135deg, #f39c12, #e74c3c); }
-  .espanol   { background: linear-gradient(135deg, #f39c12, #e67e22); }
-  .allemand  { background: linear-gradient(135deg, #2c3e50, #34495e); }
-  .techno    { background: linear-gradient(135deg, #1abc9c, #16a085); }
-  .emc       { background: linear-gradient(135deg, #6c9e3a, #4a7a1e); }
+    .btn-edit {
+      background: rgba(255, 255, 255, 0.2);
+      border: 2px solid rgba(255, 255, 255, 0.6);
+      color: #fff;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.85rem;
+      cursor: pointer;
+      margin-top: 12px;
+      transition: background 0.2s;
+    }
 
-  footer { text-align: center; padding: 30px; color: #aaa; font-size: 0.85rem; margin-top: 20px; }
-</style>
+    .btn-edit:hover {
+      background: rgba(255, 255, 255, 0.35);
+    }
+
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.55);
+      z-index: 100;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-overlay.visible {
+      display: flex;
+    }
+
+    .modal-box {
+      background: #fff;
+      border-radius: 20px;
+      padding: 36px 32px;
+      max-width: 360px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .modal-box h2 {
+      font-family: 'Baloo 2', cursive;
+      font-size: 1.6rem;
+      color: #2c3e50;
+      margin-bottom: 8px;
+    }
+
+    .modal-box p {
+      color: #888;
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+    }
+
+    .modal-box input {
+      width: 100%;
+      padding: 12px 16px;
+      border: 2px solid #e0e0e0;
+      border-radius: 12px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 1.1rem;
+      outline: none;
+      margin-bottom: 16px;
+      transition: border-color 0.2s;
+    }
+
+    .modal-box input:focus {
+      border-color: #3498db;
+    }
+
+    .modal-box .btn-valider {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(135deg, #3498db, #8e44ad);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-family: 'Baloo 2', cursive;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .modal-box .btn-valider:hover {
+      opacity: 0.88;
+    }
+
+    .modal-box .btn-skip {
+      background: none;
+      border: none;
+      color: #aaa;
+      font-size: 0.85rem;
+      cursor: pointer;
+      margin-top: 10px;
+      font-family: 'Nunito', sans-serif;
+    }
+
+    .modal-box .btn-skip:hover {
+      color: #888;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    .matiere-title {
+      font-family: 'Baloo 2', cursive;
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin: 28px 0 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #2c3e50;
+      border-bottom: 3px solid #eee;
+      padding-bottom: 8px;
+    }
+
+    .cours-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 14px;
+    }
+
+    .cours-card {
+      display: block;
+      text-decoration: none;
+      border-radius: 16px;
+      padding: 20px 18px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+      color: #fff;
+    }
+
+    .cours-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+    }
+
+    .cours-card .emoji {
+      font-size: 2rem;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .cours-card .titre {
+      font-family: 'Baloo 2', cursive;
+      font-size: 1rem;
+      font-weight: 800;
+      line-height: 1.3;
+    }
+
+    .cours-card .niveau {
+      font-size: 0.8rem;
+      opacity: 0.85;
+      margin-top: 6px;
+    }
+
+    .empty {
+      color: #bbb;
+      font-style: italic;
+      padding: 10px;
+    }
+
+    .svt {
+      background: linear-gradient(135deg, #2ecc71, #27ae60);
+    }
+
+    .maths {
+      background: linear-gradient(135deg, #3498db, #2980b9);
+    }
+
+    .physique {
+      background: linear-gradient(135deg, #e67e22, #d35400);
+    }
+
+    .histoire {
+      background: linear-gradient(135deg, #8e44ad, #6c3483);
+    }
+
+    .anglais {
+      background: linear-gradient(135deg, #e74c3c, #c0392b);
+    }
+
+    .francais {
+      background: linear-gradient(135deg, #f39c12, #e74c3c);
+    }
+
+    .espanol {
+      background: linear-gradient(135deg, #f39c12, #e67e22);
+    }
+
+    .allemand {
+      background: linear-gradient(135deg, #2c3e50, #34495e);
+    }
+
+    .techno {
+      background: linear-gradient(135deg, #1abc9c, #16a085);
+    }
+
+    .emc {
+      background: linear-gradient(135deg, #6c9e3a, #4a7a1e);
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #aaa;
+      font-size: 0.85rem;
+      margin-top: 20px;
+    }
+  </style>
 </head>
+
 <body>
 
-<div class="modal-overlay" id="modal-prenom">
-  <div class="modal-box">
-    <h2>👋 Bonjour !</h2>
-    <p>Entre ton prénom pour personnaliser tes cours.</p>
-    <input type="text" id="input-prenom" placeholder="Ton prénom..." maxlength="30" />
-    <button class="btn-valider" onclick="validerPrenom()">C'est parti ! 🚀</button>
-    <button class="btn-skip" onclick="passerSansPrenom()">Continuer sans prénom</button>
-  </div>
-</div>
-
-<header>
-  <div style="font-size:2rem;margin-bottom:8px;">📚 🎓 ✏️</div>
-  <h1 id="titre-cours">Mes cours</h1>
-  <p>Clique sur un cours pour l'ouvrir !</p>
-  <button class="btn-edit" onclick="changerPrenom()">✏️ Changer le prénom</button>
-</header>
-
-<div class="container">
-
-  <div class="matiere-title">🌿 SVT</div>
-  <div class="cours-grid">
-    <a href="svt/fleur-fruit-pollinisation.html" class="cours-card svt">
-      <span class="emoji">🌸</span>
-      <div class="titre">De la fleur au fruit – La pollinisation</div>
-      <div class="niveau">6ème – Mission 4</div>
-    </a>
+  <div class="modal-overlay" id="modal-prenom">
+    <div class="modal-box">
+      <h2>👋 Bonjour !</h2>
+      <p>Entre ton prénom pour personnaliser tes cours.</p>
+      <input type="text" id="input-prenom" placeholder="Ton prénom..." maxlength="30" />
+      <button class="btn-valider" onclick="validerPrenom()">C'est parti ! 🚀</button>
+      <button class="btn-skip" onclick="passerSansPrenom()">Continuer sans prénom</button>
+    </div>
   </div>
 
-  <div class="matiere-title">➕ Mathématiques</div>
-  <div class="cours-grid"><div class="empty">Bientôt disponible...</div></div>
+  <header>
+    <div style="font-size:2rem;margin-bottom:8px;">📚 🎓 ✏️</div>
+    <h1 id="titre-cours">Mes cours</h1>
+    <p>Clique sur un cours pour l'ouvrir !</p>
+    <button class="btn-edit" onclick="changerPrenom()">✏️ Changer le prénom</button>
+  </header>
 
-  <div class="matiere-title">🌍 Histoire-Géographie</div>
-  <div class="cours-grid">
-    <a href="histoire-geo/rome-mythe-histoire.html" class="cours-card histoire">
-      <span class="emoji">🏛️</span>
-      <div class="titre">Rome : du mythe à l'Histoire</div>
-      <div class="niveau">6ème – Chapitre 1</div>
-    </a>
-    <a href="histoire-geo/judaisme-monotheisme.html" class="cours-card histoire">
-      <span class="emoji">✡️</span>
-      <div class="titre">La naissance du monothéisme juif</div>
-      <div class="niveau">6ème – Chapitre 2</div>
-    </a>
+  <div class="container">
+
+    <div class="matiere-title">🌿 SVT</div>
+    <div class="cours-grid">
+      <a href="svt/fleur-fruit-pollinisation.html" class="cours-card svt">
+        <span class="emoji">🌸</span>
+        <div class="titre">De la fleur au fruit – La pollinisation</div>
+        <div class="niveau">6ème – Mission 4</div>
+      </a>
+    </div>
+
+    <div class="matiere-title">➕ Mathématiques</div>
+    <div class="cours-grid">
+      <div class="empty">Bientôt disponible...</div>
+    </div>
+
+    <div class="matiere-title">🌍 Histoire-Géographie</div>
+    <div class="cours-grid">
+      <a href="histoire-geo/rome-mythe-histoire.html" class="cours-card histoire">
+        <span class="emoji">🏛️</span>
+        <div class="titre">Rome : du mythe à l'Histoire</div>
+        <div class="niveau">6ème – Chapitre 1</div>
+      </a>
+      <a href="histoire-geo/judaisme-monotheisme.html" class="cours-card histoire">
+        <span class="emoji">✡️</span>
+        <div class="titre">La naissance du monothéisme juif</div>
+        <div class="niveau">6ème – Chapitre 2</div>
+      </a>
+    </div>
+
+    <div class="matiere-title">⚗️ Physique-Chimie</div>
+    <div class="cours-grid">
+      <a href="physique-chimie/etats-matiere-changements.html" class="cours-card physique">
+        <span class="emoji">🧊</span>
+        <div class="titre">États de la matière et changements d'état</div>
+        <div class="niveau">6ème – Chapitre 5</div>
+      </a>
+    </div>
+
+    <div class="matiere-title">✍️ Français</div>
+    <div class="cours-grid">
+      <div class="empty">Bientôt disponible...</div>
+    </div>
+
+    <div class="matiere-title">🇬🇧 Anglais</div>
+    <div class="cours-grid">
+      <a href="anglais/english-prepositions-description.html" class="cours-card anglais">
+        <span class="emoji">📍</span>
+        <div class="titre">Prepositions &amp; Description</div>
+        <div class="niveau">6ème – Se repérer &amp; décrire</div>
+      </a>
+    </div>
+
+    <div class="matiere-title">🇪🇸 Español</div>
+    <div class="cours-grid">
+      <div class="empty">Bientôt disponible...</div>
+    </div>
+
+    <div class="matiere-title">🇩🇪 Allemand</div>
+    <div class="cours-grid">
+      <div class="empty">Bientôt disponible...</div>
+    </div>
+
+    <div class="matiere-title">🔧 Technologie</div>
+    <div class="cours-grid">
+      <div class="empty">Bientôt disponible...</div>
+    </div>
+
+    <div class="matiere-title">🤝 EMC</div>
+    <div class="cours-grid">
+      <div class="empty">Bientôt disponible...</div>
+    </div>
+
   </div>
 
-  <div class="matiere-title">⚗️ Physique-Chimie</div>
-  <div class="cours-grid">
-    <a href="physique-chimie/etats-matiere-changements.html" class="cours-card physique">
-      <span class="emoji">🧊</span>
-      <div class="titre">États de la matière et changements d'état</div>
-      <div class="niveau">6ème – Chapitre 5</div>
-    </a>
-  </div>
+  <footer>Créé avec ❤️ – personnalisé pour toi</footer>
 
-  <div class="matiere-title">✍️ Français</div>
-  <div class="cours-grid"><div class="empty">Bientôt disponible...</div></div>
-
-  <div class="matiere-title">🇬🇧 Anglais</div>
-  <div class="cours-grid"><div class="empty">Bientôt disponible...</div></div>
-
-  <div class="matiere-title">🇪🇸 Español</div>
-  <div class="cours-grid"><div class="empty">Bientôt disponible...</div></div>
-
-  <div class="matiere-title">🇩🇪 Allemand</div>
-  <div class="cours-grid"><div class="empty">Bientôt disponible...</div></div>
-
-  <div class="matiere-title">🔧 Technologie</div>
-  <div class="cours-grid"><div class="empty">Bientôt disponible...</div></div>
-
-  <div class="matiere-title">🤝 EMC</div>
-  <div class="cours-grid"><div class="empty">Bientôt disponible...</div></div>
-
-</div>
-
-<footer>Créé avec ❤️ – personnalisé pour toi</footer>
-
-<script>
-  window.addEventListener('DOMContentLoaded', function() {
-    var prenom = localStorage.getItem('prenom');
-    if (prenom === null) {
-      document.getElementById('modal-prenom').classList.add('visible');
-    } else {
-      afficherPrenom(prenom);
-    }
-    document.getElementById('input-prenom').addEventListener('keydown', function(e) {
-      if (e.key === 'Enter') validerPrenom();
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      var prenom = localStorage.getItem('prenom');
+      if (prenom === null) {
+        document.getElementById('modal-prenom').classList.add('visible');
+      } else {
+        afficherPrenom(prenom);
+      }
+      document.getElementById('input-prenom').addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') validerPrenom();
+      });
     });
-  });
 
-  function validerPrenom() {
-    var input = document.getElementById('input-prenom');
-    var prenom = input.value.trim();
-    localStorage.setItem('prenom', prenom);
-    afficherPrenom(prenom);
-    document.getElementById('modal-prenom').classList.remove('visible');
-    input.value = '';
-  }
-
-  function passerSansPrenom() {
-    localStorage.setItem('prenom', '');
-    afficherPrenom('');
-    document.getElementById('modal-prenom').classList.remove('visible');
-  }
-
-  function afficherPrenom(prenom) {
-    var titre = document.getElementById('titre-cours');
-    var pageTitle = document.getElementById('page-title');
-    if (prenom) {
-      titre.textContent = 'Cours de ' + prenom;
-      pageTitle.textContent = 'Cours de ' + prenom + ' \uD83D\uDCDA';
-    } else {
-      titre.textContent = 'Mes cours';
-      pageTitle.textContent = 'Mes cours \uD83D\uDCDA';
+    function validerPrenom() {
+      var input = document.getElementById('input-prenom');
+      var prenom = input.value.trim();
+      localStorage.setItem('prenom', prenom);
+      afficherPrenom(prenom);
+      document.getElementById('modal-prenom').classList.remove('visible');
+      input.value = '';
     }
-  }
 
-  function changerPrenom() {
-    var actuel = localStorage.getItem('prenom') || '';
-    document.getElementById('input-prenom').value = actuel;
-    document.getElementById('modal-prenom').classList.add('visible');
-    setTimeout(function() { document.getElementById('input-prenom').focus(); }, 100);
-  }
-</script>
+    function passerSansPrenom() {
+      localStorage.setItem('prenom', '');
+      afficherPrenom('');
+      document.getElementById('modal-prenom').classList.remove('visible');
+    }
+
+    function afficherPrenom(prenom) {
+      var titre = document.getElementById('titre-cours');
+      var pageTitle = document.getElementById('page-title');
+      if (prenom) {
+        titre.textContent = 'Cours de ' + prenom;
+        pageTitle.textContent = 'Cours de ' + prenom + ' \uD83D\uDCDA';
+      } else {
+        titre.textContent = 'Mes cours';
+        pageTitle.textContent = 'Mes cours \uD83D\uDCDA';
+      }
+    }
+
+    function changerPrenom() {
+      var actuel = localStorage.getItem('prenom') || '';
+      document.getElementById('input-prenom').value = actuel;
+      document.getElementById('modal-prenom').classList.add('visible');
+      setTimeout(function () { document.getElementById('input-prenom').focus(); }, 100);
+    }
+  </script>
 
 </body>
+
 </html>
